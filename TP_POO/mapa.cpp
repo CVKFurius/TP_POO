@@ -1,0 +1,56 @@
+#include "mapa.h"
+#include <iostream>
+using namespace std;
+Mapa::Mapa(int _fila,int _columna)
+{
+    fila=_fila;
+    columna=_columna;
+}
+
+int Mapa::getFila()
+{
+    return fila;
+}
+
+void Mapa::setFila(int x)
+{
+    this->fila=x;
+}
+
+int Mapa::getColumna()
+{
+    return columna;
+}
+
+void Mapa::setColumna(int y)
+{
+    this->columna=y;
+}
+
+int **Mapa::generarMapa()
+{
+    int** matriz = new int*[this->columna];
+    for (int i = 0; i < this->fila; i++) {
+        matriz[i] = new int[this->columna];
+    }
+    return matriz;
+}
+
+void Mapa::llenarMapaYMostrar()
+{
+    int** _matriz=generarMapa();
+    int valor = 0;
+    for (int i = 0; i < this->columna; i++) {
+        for (int j = 0; j < this->columna; j++) {
+            _matriz[i][j] = valor;
+
+        }
+    }
+    cout << "Matriz " << this->fila << " x " << this->columna << ":" << endl;
+    for (int i = 0; i < this->fila; i++) {
+        for (int j = 0; j < this->columna; j++) {
+            cout << _matriz[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
